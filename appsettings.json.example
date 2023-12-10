@@ -7,6 +7,6 @@
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "Default": "sever={{YOUR HOST}};database={{YOUR DATABASE}};user={{YOUR USER}};password={{YOUR PASSWORD}};"
+    "Default": "server={{YOUR HOST}};database={{YOUR DATABASE}};user={{YOUR USER}};password={{YOUR PASSWORD}};"
   }
 }

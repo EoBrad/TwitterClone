@@ -185,7 +185,6 @@ FakesAssemblies/
 
 .vscode/settings.json
 
-MinhasReceitas.xml
 
 /.sonarqube
 coverage.opencover.xml
@@ -203,3 +202,5 @@ packages
 
 appsettings.Development.json
 appsettings.json
+
+Migrations
