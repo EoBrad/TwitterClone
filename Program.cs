@@ -4,6 +4,7 @@ using FluentValidation.AspNetCore;
 using FluentValidation;
 using TwitterClone.Services.Configuration;
 using TwitterClone.Mapper;
+using TwitterClone.Filter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,9 @@ builder.Services.AddAutoMapper(typeof(DtoToModel));
 
 // Add Services
 builder.Services.AddRepositories();
+
+// Add Exeption Filter
+builder.Services.AddMvc(options => options.Filters.Add<ExeptionFilter>());
 
 var conString = builder.Configuration.GetConnectionString("Default");
 
