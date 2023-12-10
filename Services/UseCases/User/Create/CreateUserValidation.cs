@@ -1,7 +1,7 @@
 using FluentValidation;
 using TwitterClone.Dtos;
 
-namespace TwitterClone.Services.UseCases.User.Register;
+namespace TwitterClone.Services.UseCases.User.Create;
 
 public class CreateUserValidation : AbstractValidator<CreateUserDto>
 {
