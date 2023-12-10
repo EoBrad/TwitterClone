@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using TwitterClone.context;
 using FluentValidation.AspNetCore;
 using FluentValidation;
+using TwitterClone.Services.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,9 @@ builder.Services.AddSwaggerGen();
 // Add Auto Validations
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.AddFluentValidationAutoValidation();
+
+// Add Services
+builder.Services.AddRepositories();
 
 var conString = builder.Configuration.GetConnectionString("Default");
 
