@@ -9,9 +9,12 @@ using TwitterClone.Filter;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 // Add Auto Validations
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
@@ -22,6 +25,7 @@ builder.Services.AddAutoMapper(typeof(DtoToModel));
 
 // Add Services
 builder.Services.AddRepositories();
+builder.Services.AddUseCases();
 
 // Add Exeption Filter
 builder.Services.AddMvc(options => options.Filters.Add<ExeptionFilter>());
@@ -40,5 +44,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();

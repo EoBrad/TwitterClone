@@ -9,7 +9,13 @@ public class CreateUserValidation : AbstractValidator<CreateUserDto>
     {
         RuleFor(x => x.Username).NotEmpty()
                                 .MinimumLength(5)
-                                .MaximumLength(35);
+                                .MaximumLength(35).Custom((username, context) => 
+                                {
+                                    if (username.First() != '@')
+                                    {
+                                        context.AddFailure("Username", "Username must start with @");
+                                    }
+                                });
 
         RuleFor(x => x.Password).NotEmpty()
                                 .MinimumLength(5)
@@ -28,7 +34,7 @@ public class CreateUserValidation : AbstractValidator<CreateUserDto>
 
         RuleFor(x => x.DateOfBirth).NotEmpty().Custom((date, context) => 
         {
-            if (date.Year - DateTime.Now.Year < 18)
+            if (DateTime.Now.Day >= date.Day && DateTime.Now.Month >= date.Month && DateTime.Now.Year - date.Year < 18 )
             {
                 context.AddFailure("DateOfBirth", "User must be at least 18 years old");
             }

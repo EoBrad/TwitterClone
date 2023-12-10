@@ -11,10 +11,18 @@ public class UserRepository : IUserRepository
 
     private AppDbContext _context;
 
+    public UserRepository(AppDbContext context)
+    {
+        _context = context;
+    }
+
     public async Task CheckUsernameOrEmailExists(string username, string email)
     {
-        var user = await _context.Users.FirstAsync(x => x.Username == username || x.Email == email);
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username || x.Email == email);
 
+        if (user == null)
+            return;
+        
         if(user.Username == username)
             throw new TwitterCloneExeption("Username already exists", (int)HttpStatusCode.BadRequest);
 
@@ -25,6 +33,8 @@ public class UserRepository : IUserRepository
     public async Task CreateUser(Models.User user)
     {
         await _context.Users.AddAsync(user);
+
+        _context.SaveChanges();
     }
 
     public async Task<Models.User> FindUserByEmail(string email)

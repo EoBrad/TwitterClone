@@ -2,7 +2,7 @@ namespace TwitterClone.Responses;
 
 public class CreateUserResponse
 {
-    public string message;
+    public string message { get; set; }
 
-    public string token;
+    public string token { get; set; }
 }
