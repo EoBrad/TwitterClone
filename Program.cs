@@ -3,6 +3,7 @@ using TwitterClone.context;
 using FluentValidation.AspNetCore;
 using FluentValidation;
 using TwitterClone.Services.Configuration;
+using TwitterClone.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,9 @@ builder.Services.AddSwaggerGen();
 // Add Auto Validations
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.AddFluentValidationAutoValidation();
+
+// Add AutoMapper
+builder.Services.AddAutoMapper(typeof(DtoToModel));
 
 // Add Services
 builder.Services.AddRepositories();
