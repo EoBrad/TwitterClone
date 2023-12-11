@@ -1,9 +1,14 @@
+using TwitterClone.Dtos;
+
 namespace TwitterClone.Models;
 
 public interface IUserRepository
 {
     Task CreateUser(User user);
-    Task<User> FindUserByEmail(string email);
+    Task<User> FindUserByEmailOrUsername(string userCredential);
 
+    
     Task CheckUsernameOrEmailExists(string username, string email);
+
+    Task<bool> LoginUser(LoginUserDto loginUserDto);
 }

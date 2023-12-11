@@ -1,6 +1,7 @@
 using System.Net;
 using Microsoft.EntityFrameworkCore;
 using TwitterClone.context;
+using TwitterClone.Dtos;
 using TwitterClone.Exeptions;
 using TwitterClone.Models;
 
@@ -37,8 +38,21 @@ public class UserRepository : IUserRepository
         _context.SaveChanges();
     }
 
-    public async Task<Models.User> FindUserByEmail(string email)
+    public async Task<Models.User> FindUserByEmailOrUsername(string userCredential)
     {
-        return await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+        return await _context.Users.FirstOrDefaultAsync(x => x.Email == userCredential || x.Username == userCredential);
+    }
+
+    public async Task<bool> LoginUser(LoginUserDto loginUserDto)
+    {
+        var userLogin = await _context.Users
+        .CountAsync(x => x.Username == loginUserDto.UserCredential || x.Email == loginUserDto.UserCredential && x.Password == loginUserDto.Password);
+
+        if (userLogin > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

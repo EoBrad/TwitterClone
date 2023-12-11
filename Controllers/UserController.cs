@@ -1,8 +1,10 @@
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TwitterClone.Dtos;
 using TwitterClone.Responses;
 using TwitterClone.Services.UseCases.User.Create;
+using TwitterClone.Services.UseCases.User.Login;
 
 namespace TwitterClone.Controllers;
 
@@ -16,5 +18,16 @@ public class UserController : ControllerBase
     {
         var res = await createUserUseCase.Execute(createUserDto);
         return Created(string.Empty, res);
+    }
+
+    [HttpPost]
+    [Route("login")]
+    [ProducesResponseType(typeof(LoginUserResponse), StatusCodes.Status200OK)]
+    [AllowAnonymous]
+    public async Task<IActionResult> Login([FromBody] LoginUserDto loginUserDto, [FromServices] ILoginUserUseCase loginUserUseCase)
+    {
+        var res = await loginUserUseCase.Execute(loginUserDto);
+
+        return Ok(res);
     }
 }
