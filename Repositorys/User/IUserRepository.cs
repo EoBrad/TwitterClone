@@ -12,4 +12,8 @@ public interface IUserRepository
     Task CheckUsernameOrEmailExists(string username, string email);
 
     Task<bool> LoginUser(LoginUserDto loginUserDto);
+
+    Task UpdateUserAsync();
+
+    Task<User> FindUserByIdAsync(Guid userId);
 }

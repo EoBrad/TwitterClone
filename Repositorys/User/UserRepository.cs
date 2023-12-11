@@ -44,6 +44,11 @@ public class UserRepository : IUserRepository
         return await _context.Users.FirstOrDefaultAsync(x => x.Email == userCredential || x.Username == userCredential);
     }
 
+    public async Task<Models.User> FindUserByIdAsync(Guid userId)
+    {
+        return await _context.Users.FirstOrDefaultAsync(x => x.UserId == userId);
+    }
+
     public async Task<bool> LoginUser(LoginUserDto loginUserDto)
     {
         var userLogin = await _context.Users
@@ -55,5 +60,10 @@ public class UserRepository : IUserRepository
         }
 
         return false;
+    }
+
+    public async Task UpdateUserAsync()
+    {
+       await _context.SaveChangesAsync();
     }
 }
