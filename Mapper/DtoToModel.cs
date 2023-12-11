@@ -8,5 +8,6 @@ public class DtoToModel : Profile
     public DtoToModel()
     {
         CreateMap<CreateUserDto, Models.User>();
+        CreateMap<UpdateUserDto, Models.User>();
     }
 }
