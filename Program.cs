@@ -27,6 +27,7 @@ builder.Services.AddAutoMapper(typeof(DtoToModel));
 // Add Services
 builder.Services.AddRepositories();
 builder.Services.AddUseCases();
+builder.Services.AddAwsClient(builder.Configuration);
 
 // Add Exeption Filter
 builder.Services.AddMvc(options => options.Filters.Add<ExeptionFilter>());
