@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using TwitterClone.context;
+using TwitterClone.Context;
 using FluentValidation.AspNetCore;
 using FluentValidation;
 using TwitterClone.Services.Configuration;

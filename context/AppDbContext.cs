@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TwitterClone.Models;
 
-namespace TwitterClone.context;
+namespace TwitterClone.Context;
 
 public class AppDbContext : DbContext
 {
