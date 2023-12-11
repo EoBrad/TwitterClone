@@ -8,5 +8,5 @@ public class UpdateUserDto
 
     public string Bio { get; set; }
 
-    public string PhotoURL { get; set; }
+    public IFormFile Image { get; set; }
 }

@@ -26,18 +26,21 @@ public class UpdateUserUseCase : IUpdateUserUseCase
     }
     public async Task Execute(UpdateUserDto updateUserDto, IFormFile image, string token)
     {
-        var Useremail = Jwt.GetUserByToken(token);
+        var userId = Guid.Parse(Jwt.GetUserByToken(token));
 
-        var user = await _userRepository.FindUserByEmailOrUsername(Useremail);
+        var user = await _userRepository.FindUserByIdAsync(userId);
 
         if (user == null)
             throw new TwitterCloneExeption("User not found", (int)HttpStatusCode.NotFound);
         
-        string imageGuid = $"profileImage{Guid.NewGuid}{user.UserId}";
+        string imageGuid = $"profileImage-{user.UserId}" + Guid.NewGuid().ToString();
 
         if(image != null)
-            await _amazonS3Service.UploadFileAsync("twitter-clone-joao", image, imageGuid);
-        
+        {   
+            await _amazonS3Service.UploadFileAsync("twitter-clone-public-bucket", image, imageGuid);
+            await _amazonS3Service.AddPublicGrantAclAsync("twitter-clone-public-bucket", imageGuid);
+        }
+         
         user = _mapper.Map<Models.User>(updateUserDto);
 
         user.PhotoURL = imageGuid;

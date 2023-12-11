@@ -6,6 +6,7 @@ using TwitterClone.Dtos.User;
 using TwitterClone.Responses;
 using TwitterClone.Services.UseCases.User.Create;
 using TwitterClone.Services.UseCases.User.Login;
+using TwitterClone.Services.UseCases.User.Update;
 
 namespace TwitterClone.Controllers;
 
@@ -19,5 +20,16 @@ public class UserController : ControllerBase
     {
         var res = await createUserUseCase.Execute(createUserDto);
         return Created(string.Empty, res);
+    }
+
+    [HttpPatch]
+    [Authorize]
+    public async Task<IActionResult> UpdateUser([FromForm] UpdateUserDto updateUserDto, [FromServices] IUpdateUserUseCase updateUserUseCase)
+    {
+        var bearer = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        
+        await updateUserUseCase.Execute(updateUserDto, updateUserDto.Image, bearer);
+
+        return Ok();
     }
 }
