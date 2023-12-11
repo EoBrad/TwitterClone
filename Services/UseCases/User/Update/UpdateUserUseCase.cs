@@ -24,7 +24,7 @@ public class UpdateUserUseCase : IUpdateUserUseCase
         _userRepository = userRepository;
         _mapper = mapper;
     }
-    public async Task Execute(UpdateUserDto updateUserDto, FormFile image, string token)
+    public async Task Execute(UpdateUserDto updateUserDto, IFormFile image, string token)
     {
         var Useremail = Jwt.GetUserByToken(token);
 
