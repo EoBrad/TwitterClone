@@ -1,4 +1,5 @@
 using TwitterClone.Dtos;
+using TwitterClone.Dtos.User;
 
 namespace TwitterClone.Models;
 

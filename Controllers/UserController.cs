@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TwitterClone.Dtos;
+using TwitterClone.Dtos.User;
 using TwitterClone.Responses;
 using TwitterClone.Services.UseCases.User.Create;
 using TwitterClone.Services.UseCases.User.Login;
@@ -19,6 +20,4 @@ public class UserController : ControllerBase
         var res = await createUserUseCase.Execute(createUserDto);
         return Created(string.Empty, res);
     }
-
-    
 }

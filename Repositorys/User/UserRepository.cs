@@ -1,7 +1,8 @@
 using System.Net;
 using Microsoft.EntityFrameworkCore;
-using TwitterClone.context;
+using TwitterClone.Context;
 using TwitterClone.Dtos;
+using TwitterClone.Dtos.User;
 using TwitterClone.Exeptions;
 using TwitterClone.Models;
 

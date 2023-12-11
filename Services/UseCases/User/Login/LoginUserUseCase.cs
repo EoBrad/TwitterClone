@@ -1,5 +1,6 @@
 using System.Net;
 using TwitterClone.Dtos;
+using TwitterClone.Dtos.User;
 using TwitterClone.Exeptions;
 using TwitterClone.Models;
 using TwitterClone.Responses;

@@ -1,5 +1,5 @@
 using AutoMapper;
-using TwitterClone.Dtos;
+using TwitterClone.Dtos.User;
 
 namespace TwitterClone.Mapper;
 

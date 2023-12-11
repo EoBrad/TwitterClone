@@ -1,5 +1,5 @@
 using AutoMapper;
-using TwitterClone.Dtos;
+using TwitterClone.Dtos.User;
 using TwitterClone.Models;
 using TwitterClone.Responses;
 using TwitterClone.Services.Utility;

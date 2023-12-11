@@ -1,5 +1,6 @@
 using FluentValidation;
 using TwitterClone.Dtos;
+using TwitterClone.Dtos.User;
 
 namespace TwitterClone.Services.UseCases.User.Create;
 
