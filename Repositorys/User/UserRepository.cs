@@ -62,8 +62,10 @@ public class UserRepository : IUserRepository
         return false;
     }
 
-    public async Task UpdateUserAsync()
+    public async Task UpdateUserAsync(Models.User user)
     {
+        _context.Users.Update(user);
+
        await _context.SaveChangesAsync();
     }
 }

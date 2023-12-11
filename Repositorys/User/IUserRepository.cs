@@ -13,7 +13,7 @@ public interface IUserRepository
 
     Task<bool> LoginUser(LoginUserDto loginUserDto);
 
-    Task UpdateUserAsync();
+    Task UpdateUserAsync(User user);
 
     Task<User> FindUserByIdAsync(Guid userId);
 }

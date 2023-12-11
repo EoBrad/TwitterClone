@@ -16,13 +16,12 @@ public class UpdateUserUseCase : IUpdateUserUseCase
 
     private readonly AmazonS3Service _amazonS3Service;
 
-    private readonly IMapper _mapper;
 
-    public UpdateUserUseCase(IUserRepository userRepository, AmazonS3Service amazonS3Service, IMapper mapper)
+
+    public UpdateUserUseCase(IUserRepository userRepository, AmazonS3Service amazonS3Service)
     {
         _amazonS3Service = amazonS3Service;
         _userRepository = userRepository;
-        _mapper = mapper;
     }
     public async Task Execute(UpdateUserDto updateUserDto, IFormFile image, string token)
     {
@@ -41,10 +40,11 @@ public class UpdateUserUseCase : IUpdateUserUseCase
             await _amazonS3Service.AddPublicGrantAclAsync("twitter-clone-public-bucket", imageGuid);
         }
          
-        user = _mapper.Map<Models.User>(updateUserDto);
-
+        user.Bio = updateUserDto.Bio;
+        user.Name = updateUserDto.Name;
+        user.LastName = updateUserDto.LastName;
         user.PhotoURL = imageGuid;
 
-        await _userRepository.UpdateUserAsync();
+        await _userRepository.UpdateUserAsync(user);
     }   
 }
