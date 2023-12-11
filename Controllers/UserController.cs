@@ -20,14 +20,5 @@ public class UserController : ControllerBase
         return Created(string.Empty, res);
     }
 
-    [HttpPost]
-    [Route("login")]
-    [ProducesResponseType(typeof(LoginUserResponse), StatusCodes.Status200OK)]
-    [AllowAnonymous]
-    public async Task<IActionResult> Login([FromBody] LoginUserDto loginUserDto, [FromServices] ILoginUserUseCase loginUserUseCase)
-    {
-        var res = await loginUserUseCase.Execute(loginUserDto);
-
-        return Ok(res);
-    }
+    
 }
