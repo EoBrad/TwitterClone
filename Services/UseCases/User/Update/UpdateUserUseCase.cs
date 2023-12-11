@@ -43,7 +43,7 @@ public class UpdateUserUseCase : IUpdateUserUseCase
         user.Bio = updateUserDto.Bio;
         user.Name = updateUserDto.Name;
         user.LastName = updateUserDto.LastName;
-        user.PhotoURL = imageGuid;
+        user.PhotoURL = $"https://twitter-clone-public-bucket.s3.sa-east-1.amazonaws.com/{imageGuid}";
 
         await _userRepository.UpdateUserAsync(user);
     }   
