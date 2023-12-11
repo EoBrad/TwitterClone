@@ -16,7 +16,7 @@ public class Jwt
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
-             new Claim("Email", user.Email),
+             new Claim("UserId", user.UserId.ToString()),
             }),
             Expires = DateTime.UtcNow.AddHours(1),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Key), SecurityAlgorithms.HmacSha256Signature)
@@ -27,5 +27,13 @@ public class Jwt
         var token = tokenHandler.WriteToken(tokenGenerator);
 
         return token;
+    }
+
+    public static string GetUserByToken(string token)
+    {
+       var tokenHandler = new JwtSecurityToken(token);
+       var email = tokenHandler.Claims.First(claim => claim.Type == "UserId").Value;
+       
+       return email;
     }
 }
