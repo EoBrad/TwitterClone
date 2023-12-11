@@ -1,5 +1,6 @@
 using TwitterClone.Services.UseCases.User.Create;
 using TwitterClone.Services.UseCases.User.Login;
+using TwitterClone.Services.UseCases.User.Update;
 
 namespace TwitterClone.Services.Configuration;
 
@@ -9,5 +10,6 @@ public static class AddUseCasesConfiguration
     {
         service.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
         service.AddScoped<ILoginUserUseCase, LoginUserUseCase>();
+        service.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
     }
 }
