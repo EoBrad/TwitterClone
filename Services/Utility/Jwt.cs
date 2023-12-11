@@ -1,11 +1,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Principal;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using TwitterClone.Models;
 
-namespace TwitterClone.Services;
+namespace TwitterClone.Services.Utility;
 
 public class Jwt
 {

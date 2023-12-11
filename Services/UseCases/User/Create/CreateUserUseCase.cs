@@ -2,6 +2,7 @@ using AutoMapper;
 using TwitterClone.Dtos;
 using TwitterClone.Models;
 using TwitterClone.Responses;
+using TwitterClone.Services.Utility;
 
 namespace TwitterClone.Services.UseCases.User.Create;
 
@@ -19,6 +20,8 @@ public class CreateUserUseCase : ICreateUserUseCase
     public async Task<CreateUserResponse> Execute(CreateUserDto createUserDto)
     {
         await _userRepository.CheckUsernameOrEmailExists(createUserDto.Username, createUserDto.Email);
+
+        createUserDto.Password = Encrypt.EncryptPassword(createUserDto.Password);
 
         var user = _mapper.Map<Models.User>(createUserDto);
 
