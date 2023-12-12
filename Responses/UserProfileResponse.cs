@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TwitterClone.Responses;
 
-public class FindUserResponse
+public class UserProfileResponse
 {
     public Guid UserId { get; set; }
 

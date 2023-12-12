@@ -7,6 +7,6 @@ public class ModelToResponse : Profile
 {
     public ModelToResponse()
     {
-        CreateMap<Models.User, FindUserResponse>();
+        CreateMap<Models.User, UserProfileResponse>();
     }
 }
