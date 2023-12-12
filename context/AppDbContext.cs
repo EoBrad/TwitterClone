@@ -10,4 +10,8 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
+
+    public DbSet<Tweet> Tweets { get; set; }
+
+    public DbSet<TweetUserLike> Likes { get; set; }
 }
