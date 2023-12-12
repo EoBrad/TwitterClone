@@ -25,8 +25,10 @@ public class ProfileUseCase : IProfileUseCase
  
     public async Task<UserProfileResponse> Execute(string username)
     {
-        if (username.Contains('.'))
+        if (username.Contains('.') || username.Contains('@'))
             throw new TwitterCloneExeption("Invalid username", (int)HttpStatusCode.BadRequest);
+
+        username = $"@{username}";
 
         var user = await _userRepository.FindUserByEmailOrUsername(username);
 
