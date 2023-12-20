@@ -4,13 +4,13 @@ using TwitterClone.Repositorys.Tweet;
 
 namespace TwitterClone.Services.UseCases.Tweet.Create;
 
-public class CreateUserUseCase : ICreateTweetUseCase
+public class CreateTweetUseCase : ICreateTweetUseCase
 {
     private readonly ITweetRepository _tweetRepository;
     
     private readonly IMapper _mapper;
 
-    public CreateUserUseCase(ITweetRepository tweetRepository, IMapper mapper)
+    public CreateTweetUseCase(ITweetRepository tweetRepository, IMapper mapper)
     {
         _mapper = mapper;
         _tweetRepository = tweetRepository;

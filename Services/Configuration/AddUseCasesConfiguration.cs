@@ -1,4 +1,5 @@
 using TwitterClone.Services.UseCases.Profile;
+using TwitterClone.Services.UseCases.Tweet.Create;
 using TwitterClone.Services.UseCases.User.Create;
 using TwitterClone.Services.UseCases.User.Login;
 using TwitterClone.Services.UseCases.User.Update;
@@ -13,5 +14,6 @@ public static class AddUseCasesConfiguration
         service.AddScoped<ILoginUserUseCase, LoginUserUseCase>();
         service.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
         service.AddScoped<IProfileUseCase, ProfileUseCase>();
+        service.AddScoped<ICreateTweetUseCase, CreateTweetUseCase>();
     }
 }
