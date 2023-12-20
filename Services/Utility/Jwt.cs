@@ -32,8 +32,8 @@ public class Jwt
     public static string GetUserByToken(string token)
     {
        var tokenHandler = new JwtSecurityToken(token);
-       var email = tokenHandler.Claims.First(claim => claim.Type == "UserId").Value;
+       var userId = tokenHandler.Claims.First(claim => claim.Type == "UserId").Value;
        
-       return email;
+       return userId;
     }
 }

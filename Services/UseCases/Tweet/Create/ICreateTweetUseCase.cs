@@ -8,5 +8,5 @@ namespace TwitterClone.Services.UseCases.Tweet.Create;
 
 public interface ICreateTweetUseCase
 {
-    Task Execute(CreateTweetDto createTweetDto, Guid userId);
+    Task Execute(CreateTweetDto createTweetDto, string token);
 }
