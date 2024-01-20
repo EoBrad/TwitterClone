@@ -15,5 +15,7 @@ public class TweetRepository : ITweetRepository
     public async Task CreateTweetAsync(Models.Tweet tweet)
     {
         await _context.Tweets.AddAsync(tweet);
+
+        await _context.SaveChangesAsync();
     }
 }

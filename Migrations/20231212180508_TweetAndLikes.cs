@@ -21,14 +21,14 @@ namespace TwitterClone.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", rowVersion: true, nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
-                    UserId1 = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tweets", x => x.TweetId);
                     table.ForeignKey(
-                        name: "FK_tweets_users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_tweets_users_UserId",
+                        column: x => x.UserId,
                         principalTable: "users",
                         principalColumn: "UserId");
                 })
@@ -73,9 +73,9 @@ namespace TwitterClone.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tweets_UserId1",
+                name: "IX_tweets_UserId",
                 table: "tweets",
-                column: "UserId1");
+                column: "UserId");
         }
 
         /// <inheritdoc />

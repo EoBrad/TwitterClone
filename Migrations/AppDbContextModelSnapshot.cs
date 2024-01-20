@@ -33,12 +33,12 @@ namespace TwitterClone.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid?>("UserId1")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("char(36)");
 
                     b.HasKey("TweetId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("tweets");
                 });
@@ -116,7 +116,7 @@ namespace TwitterClone.Migrations
                 {
                     b.HasOne("TwitterClone.Models.User", null)
                         .WithMany("Tweets")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("TwitterClone.Models.TweetUserLike", b =>
